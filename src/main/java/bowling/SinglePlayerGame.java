@@ -31,4 +31,33 @@ public class SinglePlayerGame {
 	public int score() {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
+
+	/**
+         * @return vrai si le jeu est finin faux sinon
+         */
+        public boolean isFinished() {
+		throw new UnsupportedOperationException("Pas encore implémenté");
+	}
+	
+	/**
+         * @return vrai si le dernier lancer à terminé le tour précédent
+         */
+	public boolean hasCompletedFrame() {
+		throw new UnsupportedOperationException("Pas encore implémenté");
+	}
+	
+	/**
+         * @return Le numéro du tour courant [1..10], ou 0 si le jeu est fini
+         */
+	public int getFrameNumber() {
+		throw new UnsupportedOperationException("Pas encore implémenté");
+	}
+
+	/**
+         * @return Le numéro du prochain lancer pour tour courant [1..3], ou 0 si le jeu est fini
+         */
+        public int getNextBallNumber() {
+		throw new UnsupportedOperationException("Pas encore implémenté");
+	}
+        
 }

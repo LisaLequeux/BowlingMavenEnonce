@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-public class GameRunTest {
+class GameRunTest {
 
 	private SinglePlayerGame game;
 
@@ -19,7 +19,7 @@ public class GameRunTest {
 	 * Si on envoie toutes les 20 boules dans la rigole, le score final est 0
 	 */
 	@Test
-	public void testBeginGame() {
+	void testBeginGame() {
 		assertEquals(1, game.getFrameNumber(),
                         "On doit commencer au tour   n°1");
 		assertEquals(1, game.getNextBallNumber(),
@@ -27,7 +27,7 @@ public class GameRunTest {
 	}
 
 	@Test
-	public void testAllOnes() {
+	void testAllOnes() {
 		rollMany(20, 1);
 		assertEquals(0, game.getFrameNumber(),
                         "On a fini, le n° de tour doit être 0");
@@ -38,7 +38,7 @@ public class GameRunTest {
 	}
 
 	@Test
-	public void testOneSpare()  {
+	void testOneSpare()  {
 		rollSpare(); 
 		assertTrue(game.hasCompletedFrame(),
                         "Le tour courant doit être terminé");
@@ -49,7 +49,7 @@ public class GameRunTest {
 	}
 
 	@Test
-	public void testOneStrike()  {
+	void testOneStrike()  {
 		rollStrike(); // 10 + 7
 		assertTrue(game.hasCompletedFrame(),
                         "Le tour courant doit être terminé");

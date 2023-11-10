@@ -17,7 +17,7 @@ public class SinglePlayerGame {
 	 * Cette méthode doit être appelée à chaque lancé de boule
 	 *
 	 * @param nombreDeQuillesAbattues le nombre de quilles abattues lors de
-	 * ce lancé
+	 *                                ce lancé
 	 */
 	public void lancer(int nombreDeQuillesAbattues) {
 
@@ -33,31 +33,32 @@ public class SinglePlayerGame {
 	}
 
 	/**
-         * @return vrai si le jeu est finin faux sinon
-         */
-        public boolean isFinished() {
+	 * @return vrai si le jeu est finin faux sinon
+	 */
+	public boolean isFinished() {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
-	
+
 	/**
-         * @return vrai si le dernier lancer à terminé le tour précédent
-         */
+	 * @return vrai si le dernier lancer à terminé le tour précédent
+	 */
 	public boolean hasCompletedFrame() {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
-	
+
 	/**
-         * @return Le numéro du tour courant [1..10], ou 0 si le jeu est fini
-         */
+	 * @return Le numéro du tour courant [1..10], ou 0 si le jeu est fini
+	 */
 	public int getFrameNumber() {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
 
 	/**
-         * @return Le numéro du prochain lancer pour tour courant [1..3], ou 0 si le jeu est fini
-         */
-        public int getNextBallNumber() {
+	 * @return Le numéro du prochain lancer pour tour courant [1..3], ou 0 si le jeu
+	 *         est fini
+	 */
+	public int getNextBallNumber() {
 		throw new UnsupportedOperationException("Pas encore implémenté");
 	}
-        
+
 }

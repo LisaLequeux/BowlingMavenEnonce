@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-public class SinglePlayerGameTest {
+class SinglePlayerGameTest {
 
 	private SinglePlayerGame game;
 
@@ -25,20 +25,20 @@ public class SinglePlayerGameTest {
 	 * Si on envoie toutes les 20 boules dans la rigole, le score final est 0
 	 */
 	@Test
-	public void testGutterGame() {
+	void testGutterGame() {
 		rollMany(20, 0);
 		assertEquals(0, game.score());
 		assertTrue(game.isFinished());
 	}
 
 	@Test
-	public void testAllOnes() {
+	void testAllOnes() {
 		rollMany(20, 1);
 		assertEquals(20, game.score());
 		assertTrue(game.isFinished());	}
 
 	@Test
-	public void testOneSpare()  {
+	void testOneSpare()  {
 		rollSpare(); // 10 + 3
 		game.lancer(3); // 3
 		rollMany(17, 0); // 0
@@ -47,7 +47,7 @@ public class SinglePlayerGameTest {
 	}
 
 	@Test
-	public void testOneStrike()  {
+	void testOneStrike()  {
 		rollStrike(); // 10 + 7
 		assertTrue(game.hasCompletedFrame());
                 assertEquals(1, game.getNextBallNumber());
@@ -60,7 +60,7 @@ public class SinglePlayerGameTest {
 	}
 
 	@Test
-	public void testPerfectGame() {
+	void testPerfectGame() {
 		// 12 boules à 10 points
 		rollMany(12, 10);
 		assertEquals(300, game.score());
@@ -68,10 +68,10 @@ public class SinglePlayerGameTest {
 	}
 
 	@Test
-	public void testTypicalGame()  {
+	void testTypicalGame()  {
 		rollMany(8, 3); // 6 points aux 4 1° tours -> 24
 		assertTrue(game.hasCompletedFrame()); // Le dernier tir a terminé le cours précédent
-                assertEquals(5, game.getFrameNumber()); // On est au tour n° 5
+        assertEquals(5, game.getFrameNumber()); // On est au tour n° 5
 		rollStrike(); // 10 + 10
 		assertTrue(game.hasCompletedFrame());
 		rollSpare(); // 10 + 0

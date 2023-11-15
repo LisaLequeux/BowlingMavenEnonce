@@ -6,11 +6,13 @@ package bowling;
  * final de ce joueur
  */
 public class PartieMonoJoueur {
-
+	private int points; 
+	
 	/**
 	 * Constructeur
 	 */
 	public PartieMonoJoueur() {
+		
 	}
 
 	/**
@@ -21,9 +23,21 @@ public class PartieMonoJoueur {
 	 * @return vrai si le joueur doit lancer à nouveau pour continuer son tour, faux sinon	
 	 */
 	public boolean enregistreLancer(int nombreDeQuillesAbattues) {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		boolean response = true; 
+		int i = 10; 
+		if(nombreDeQuillesAbattues < i){
+			response = true; 
+		}
+		else {
+			response = false; 
+		}
+		return response; 
 	}
+	
+	/** regarder replit pour voir comment metre throw new Illegal ...
 
+	 
+	 
 	/**
 	 * Cette méthode donne le score du joueur.
 	 * Si la partie n'est pas terminée, on considère que les lancers restants
@@ -31,7 +45,12 @@ public class PartieMonoJoueur {
 	 * @return Le score du joueur
 	 */
 	public int score() {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		int total = 0;
+		int i ; 
+		for(i=1, i=10, i++){
+			
+		}
+		return total; 
 	}
 
 	/**

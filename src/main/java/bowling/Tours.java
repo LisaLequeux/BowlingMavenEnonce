@@ -1,57 +1,59 @@
 package bowling;
 
 public class Tours {
-	private int nbQuilles1; 
-	private int nbQuilles2; 
-	private Tours suivant; 
+	private int numTours;
+	private int nbQuilles = 10;
+	private int nbQuillesTombees1; 
+	private int nbQuillesTombees2;
+	private int nbQuillesTombees3;
+	private boolean estFini = false; 
 	
 	
 	/** Constructeurs */
-	public Tours(int nbQuilles1, int nbQuilles2){
-		this.nbQuilles1 = nbQuilles1; 
-		this.nbQuilles2 = nbQuilles2; 
+	public Tours(int numTours){
+		this.numTours = numTours; 
 	}
 	
-	
-	
+
 	/** Les methodes de modifications*/ 
-	public int scoreTours(int nbQuilles1, int nbQuilles2){
+	public int scoreTours(Tours suivant){
 		int resultat = 0;
-		if(nbQuilles1 < 10){
-			if(nbQuilles1 + nbQuilles2 < 10){
-				resultat = nbQuilles1 + nbQuilles2; 
+		if(nbQuillesTombees1 < nbQuilles){
+			if(nbQuillesTombees1 + nbQuillesTombees2 < nbQuilles){
+				resultat = nbQuillesTombees1 + nbQuillesTombees2; 
 			}
-			if(nbQuilles1 + nbQuilles2 == 10){
-				resultat = 10 + suivant.bonusPourSpare() ;
+			if(nbQuillesTombees1 + nbQuillesTombees2 == nbQuilles){
+				resultat = 10 + suivant.pourSpare() ;
 			}
 			
 		}
 		else {
-			resultat = 10 + suivant.bonusPourStrike();
+			resultat = 10 + suivant.pourStrike();
 		}
 		return resultat; 
 	}
 	
-	public int bonusPourSpare(){
-		return getSuivant().nbQuilles1;
+	public int pourSpare(){
+		return getSuivant().nbQuillesTombees1;
 	}
 	
-	public int bonusPourStrike(){
+	public int pourStrike(){
 		int bonus = 0;
-		return bonus = getSuivant().nbQuilles1 + getSuivant().nbQuilles2;
+		return bonus = getSuivant().nbQuillesTombees1 + getSuivant().nbQuillesTombees2;
 	}
-	
-	
+
+	public boolean estFini(){
+		return estFini;
+	}
+
+
+
 	/** Les methodes d'acces */
 	public int getNbQuilles1(){
-		return nbQuilles1; 
+		return nbQuillesTombees1; 
 	}
 	
 	public int getNbQuilles2(){
-		return nbQuilles2; 
-	}
-	
-	public Tours getSuivant(){
-		return suivant; 
+		return nbQuillesTombees2; 
 	}
 }

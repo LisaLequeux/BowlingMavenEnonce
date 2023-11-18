@@ -9,7 +9,9 @@ import java.util.ArrayList;
  */
 public class PartieMonoJoueur {
 	private int points; 
-	private int nbTours = 10; 
+	private int numeroTour = 1;
+	private static int nbTours = 10; 
+	private static int nbQuilles = 10; 
 	
 	ArrayList<Tours> partie = new ArrayList<>();
 	
@@ -32,20 +34,20 @@ public class PartieMonoJoueur {
 	public boolean enregistreLancer(int nombreDeQuillesAbattues) {
 		if(estTerminee())
 			throw new IllegalStateException("La partie est terminée!");
-		boolean response = true; 
-		int i = 10; 
-		if(nombreDeQuillesAbattues < i){
-			response = true; 
+		boolean response = true;
+		partie.get(numeroTour-1).scoreTours(nombreDeQuillesAbattues);
+		if(!partie.get(numeroTour-1).estFini()){
+			response = true;
 		}
 		else {
 			response = false; 
 		}
+		if(numeroTour < nbTours) {
+			nbTours++;
+		}
 		return response; 
 	}
 	
-	/** regarder replit pour voir comment metre throw new Illegal ...
-
-	 
 	 
 	/**
 	 * Cette méthode donne le score du joueur.
@@ -55,18 +57,21 @@ public class PartieMonoJoueur {
 	 */
 	public int score() {
 		int total = 0;
+		int quillesTombees = Tours.getNbQuillesTombees1() + Tours.getNbQuillesTombees2();
 		for(int i=1; i< 9; i++) {
 			Tours tours = partie.get(i);	
-			total += tours.scoreTours(partie.get(i+1));
+			total += total + tours.scoreTours(quillesTombees);
 		}
 		return total;
 	}
+	
 
 	/**
 	 * @return vrai si la partie est terminée pour ce joueur, faux sinon
 	 */
 	public boolean estTerminee() {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		
+		return partie.get(nbTours-1).estFini();
 	}
 
 
@@ -74,7 +79,8 @@ public class PartieMonoJoueur {
 	 * @return Le numéro du tour courant [1..10], ou 0 si le jeu est fini
 	 */
 	public int numeroTourCourant() {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		if (estTerminee()) return 0;
+		return numeroTour;
 	}
 
 	/**
@@ -82,7 +88,9 @@ public class PartieMonoJoueur {
 	 *         est fini
 	 */
 	public int numeroProchainLancer() {
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		if (estTerminee()) return 0;
+		else if (numeroTour == nbTours) return partie.get(nbTours-1).getNumCoup() + 1;
+		else return partie.get(numeroTour).getNumCoup();
 	}
 
 }

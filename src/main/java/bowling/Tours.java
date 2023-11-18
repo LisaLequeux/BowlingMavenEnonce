@@ -2,10 +2,12 @@ package bowling;
 
 public class Tours {
 	private int numTours;
+	private int numCoup = 1;
 	private int nbQuilles = 10;
-	private int nbQuillesTombees1; 
-	private int nbQuillesTombees2;
-	private int nbQuillesTombees3;
+	private static int nbQuillesTombees1; 
+	private static int nbQuillesTombees2;
+	private static int nbQuillesTombees3;
+	private Tours suivant;
 	private boolean estFini = false; 
 	
 	
@@ -16,7 +18,7 @@ public class Tours {
 	
 
 	/** Les methodes de modifications*/ 
-	public int scoreTours(Tours suivant){
+	public int scoreTours(int valeur){
 		int resultat = 0;
 		if(nbQuillesTombees1 < nbQuilles){
 			if(nbQuillesTombees1 + nbQuillesTombees2 < nbQuilles){
@@ -34,12 +36,19 @@ public class Tours {
 	}
 	
 	public int pourSpare(){
+		
 		return getSuivant().nbQuillesTombees1;
 	}
 	
 	public int pourStrike(){
 		int bonus = 0;
-		return bonus = getSuivant().nbQuillesTombees1 + getSuivant().nbQuillesTombees2;
+		if(numTours < 10){
+			 bonus = getSuivant().nbQuillesTombees1 + getSuivant().nbQuillesTombees2;
+		}
+		else{
+			 bonus = getSuivant().nbQuillesTombees2 + getSuivant().nbQuillesTombees3;
+		}
+		return bonus;
 	}
 
 	public boolean estFini(){
@@ -49,11 +58,27 @@ public class Tours {
 
 
 	/** Les methodes d'acces */
-	public int getNbQuilles1(){
+	public static int getNbQuillesTombees1(){
 		return nbQuillesTombees1; 
 	}
 	
-	public int getNbQuilles2(){
+	public static int getNbQuillesTombees2(){
 		return nbQuillesTombees2; 
+	}
+
+	public static int getNbQuillesTombees3() {
+		return nbQuillesTombees3;
+	}
+	
+	public int getNumTours(){
+		return numTours; 
+	}
+	
+	public Tours getSuivant(){
+		return suivant; 
+	}
+
+	public int getNumCoup() {
+		return numCoup;
 	}
 }
